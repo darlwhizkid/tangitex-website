@@ -81,3 +81,32 @@ contactForm.addEventListener('submit', (e) => {
     alert('Message sent successfully!');
     contactForm.reset();
 });
+
+// Add this to your existing script.js
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+        navMenu.classList.remove('active');
+    }
+});
+
+// Add at the beginning of your script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.getElementById('preloader');
+    
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }, 1000);
+    });
+});

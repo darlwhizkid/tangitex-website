@@ -1,9 +1,133 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Renner', Arial, sans-serif;
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
 }
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.dark-mode #preloader {
+    background: #000;
+}
+
+/* From Uiverse.io by Nawsome */ 
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: 160px;
+    height: 100px;
+    margin-left: -80px;
+    margin-top: -50px;
+    border-radius: 5px;
+    background: #1e3f57;
+    animation: dot1_ 3s cubic-bezier(0.55,0.3,0.24,0.99) infinite;
+  }
+  
+  .loader:nth-child(2) {
+    z-index: 11;
+    width: 150px;
+    height: 90px;
+    margin-top: -45px;
+    margin-left: -75px;
+    border-radius: 3px;
+    background: #3c517d;
+    animation-name: dot2_;
+  }
+  
+  .loader:nth-child(3) {
+    z-index: 12;
+    width: 40px;
+    height: 20px;
+    margin-top: 50px;
+    margin-left: -20px;
+    border-radius: 0 0 5px 5px;
+    background: #6bb2cd;
+    animation-name: dot3_;
+  }
+  
+  @keyframes dot1_ {
+    3%,97% {
+      width: 160px;
+      height: 100px;
+      margin-top: -50px;
+      margin-left: -80px;
+    }
+  
+    30%,36% {
+      width: 80px;
+      height: 120px;
+      margin-top: -60px;
+      margin-left: -40px;
+    }
+  
+    63%,69% {
+      width: 40px;
+      height: 80px;
+      margin-top: -40px;
+      margin-left: -20px;
+    }
+  }
+  
+  @keyframes dot2_ {
+    3%,97% {
+      height: 90px;
+      width: 150px;
+      margin-left: -75px;
+      margin-top: -45px;
+    }
+  
+    30%,36% {
+      width: 70px;
+      height: 96px;
+      margin-left: -35px;
+      margin-top: -48px;
+    }
+  
+    63%,69% {
+      width: 32px;
+      height: 60px;
+      margin-left: -16px;
+      margin-top: -30px;
+    }
+  }
+  
+  @keyframes dot3_ {
+    3%,97% {
+      height: 20px;
+      width: 40px;
+      margin-left: -20px;
+      margin-top: 50px;
+    }
+  
+    30%,36% {
+      width: 8px;
+      height: 8px;
+      margin-left: -5px;
+      margin-top: 49px;
+      border-radius: 8px;
+    }
+  
+    63%,69% {
+      width: 16px;
+      height: 4px;
+      margin-left: -8px;
+      margin-top: -37px;
+      border-radius: 10px;
+    }
+  }
+
+  
 header {
     display: flex;
     justify-content: space-between;
@@ -34,6 +158,10 @@ nav ul li a {
     text-decoration: none;
     color: #007BFF;
     transition: color 0.3s;
+}
+
+.dropbtn, .dropdown-content{
+    display: none;
 }
 
 /* Update dark/light mode specific styles */
@@ -231,6 +359,7 @@ section {
 /* Service Cards */
 .service-card {
     background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 15px;
@@ -280,6 +409,7 @@ section {
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -481,9 +611,7 @@ header img {
     }
 
     nav ul {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
     }
 
     .theme-switch {
@@ -502,6 +630,31 @@ header img {
 
     .hero-content p {
         font-size: 1.2em;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: inherit;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        display: block;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 15px 0;
+        text-align: center;
     }
 }
 
@@ -569,4 +722,25 @@ header img {
     .portfolio-overlay h3 {
         font-size: 1.2em;
     }
+}
+
+@font-face {
+    font-family: 'Renner';
+    src: url('../fonts/Renner_\ 400\ Book.otf') format('otf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Renner';
+    src: url('../fonts/Renner_\ 500\ Medium.otf') format('otf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Renner';
+    src: url('../fonts/Renner_\ 700\ Bold.otf') format('otf');
+    font-weight: 700;
+    font-style: normal;
 }
