@@ -82,7 +82,6 @@ contactForm.addEventListener('submit', (e) => {
     contactForm.reset();
 });
 
-// Add this to your existing script.js
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 

@@ -610,10 +610,6 @@ header img {
         width: 150px;
     }
 
-    nav ul {
-        display: none;
-    }
-
     .theme-switch {
         margin-top: 15px;
     }
@@ -636,8 +632,13 @@ header img {
         display: block;
     }
 
-    .nav-menu {
+    nav ul {
         display: none;
+    }
+
+    nav ul.active {
+        display: flex;
+        flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
@@ -645,10 +646,6 @@ header img {
         background: inherit;
         padding: 20px 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .nav-menu.active {
-        display: block;
     }
 
     nav ul li {
