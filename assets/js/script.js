@@ -82,20 +82,29 @@ contactForm.addEventListener('submit', (e) => {
     contactForm.reset();
 });
 
-const menuToggle = document.querySelector('.menu-toggle');
+const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-menuToggle.addEventListener('click', () => {
+hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+});
+
+// Close menu when clicking a nav link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    });
 });
 
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!e.target.closest('nav')) {
-        navMenu.classList.remove('active');
-    }
+      if (!e.target.closest('nav')) {
+          navMenu.classList.remove('active');
+          hamburger.classList.remove('active');
+      }
 });
-
 // Add at the beginning of your script.js
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');

@@ -406,21 +406,47 @@ section {
 /* Team Members */
 .team-member {
     text-align: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    margin: 20px;
+    position: relative;
 }
 
-.team-member img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 15px;
+.image-container {
+    width: 280px;  /* Increased width */
+    height: 320px; /* Increased height for better face visibility */
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px; /* Changed to rounded rectangle for better face framing */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center 20%; /* Adjusts vertical alignment to focus on faces */
+    transition: transform 0.5s ease;
 }
 
+.primary-img {
+    position: relative;
+    z-index: 2;
+}
+
+.secondary-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.image-container:hover .primary-img {
+    opacity: 0;
+}
+
+.image-container:hover .secondary-img {
+    opacity: 1;
+}
 .social-links a {
     color: #007BFF;
     margin: 0 10px;
@@ -629,32 +655,86 @@ header img {
     }
 
     .menu-toggle {
-        display: block;
+        display: none !important; /* Force hide on desktop */
     }
 
-    nav ul {
+    @media screen and (max-width: 768px) {
+        .hamburger {
+            display: block;
+          }
+            @media screen and (max-width: 768px) {
+              .nav-menu {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                z-index: 99;
+              }
+
+              .nav-menu.active {
+                display: block;
+                animation: slideDown 0.3s ease-in-out;
+              }
+
+              .nav-menu li {
+                margin: 15px 0;
+                text-align: center;
+              }
+
+              .nav-menu li a {
+                color: #007bff;
+                font-size: 1.2rem;
+                font-weight: 600;
+                display: block;
+                padding: 10px;
+              }
+
+              .nav-menu li a:hover {
+                color: #0056b3;
+                background: #f8f9fa;
+                transform: scale(1.05);
+                transition: all 0.3s ease;
+              }
+            }          @keyframes slideDown {
+            from {
+              opacity: 0;
+              transform: translateY(-10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+    }
+
+    .hamburger {
         display: none;
+        cursor: pointer;
+        padding: 10px;
     }
 
-    nav ul.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: inherit;
-        padding: 20px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    nav ul li {
+    .hamburger span {
         display: block;
-        margin: 15px 0;
-        text-align: center;
+        width: 25px;
+        height: 3px;
+        margin: 5px 0;
+        background: #007bff; /* Nice visible blue color */
+        transition: all 0.3s ease;
+    }
+
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 100;
     }
 }
-
 @media screen and (max-width: 1024px) {
     .services-container, 
     .team-grid, 
@@ -740,4 +820,9 @@ header img {
     src: url('../fonts/Renner_\ 700\ Bold.otf') format('otf');
     font-weight: 700;
     font-style: normal;
+}
+
+.menu-toggle .fas {
+    color: #007bff;
+    font-size: 24px; /* Optional: make it bigger */
 }
